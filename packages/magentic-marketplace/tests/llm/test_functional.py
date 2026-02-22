@@ -22,29 +22,6 @@ class TestFunctionalInterface:
     """Test the functional interface for LLM clients."""
 
     @pytest.mark.skipif(
-        not os.environ.get("ANTHROPIC_API_KEY"), reason="ANTHROPIC_API_KEY not set"
-    )
-    @pytest.mark.asyncio
-    async def test_generate_with_anthropic_provider(self):
-        """Test functional generate with Anthropic provider."""
-        messages = [
-            ChatCompletionUserMessageParam(
-                role="user", content="Say 'Hello World' and nothing else."
-            )
-        ]
-        response, usage = await functional.generate(
-            messages,
-            provider="anthropic",
-            model="claude-sonnet-4-20250514",
-            temperature=0.1,
-            max_tokens=50,
-        )
-
-        assert isinstance(response, str)
-        assert "Hello World" in response
-        assert usage.provider == "anthropic"
-
-    @pytest.mark.skipif(
         not os.environ.get("OPENAI_API_KEY"), reason="OPENAI_API_KEY not set"
     )
     @pytest.mark.asyncio
@@ -66,29 +43,6 @@ class TestFunctionalInterface:
         assert isinstance(response, str)
         assert "Hello World" in response
         assert usage.provider == "openai"
-
-    @pytest.mark.skipif(
-        not os.environ.get("GEMINI_API_KEY"), reason="GEMINI_API_KEY not set"
-    )
-    @pytest.mark.asyncio
-    async def test_generate_with_gemini_provider(self):
-        """Test functional generate with Gemini provider."""
-        messages = [
-            ChatCompletionUserMessageParam(
-                role="user", content="Say 'Hello World' and nothing else."
-            )
-        ]
-        response, usage = await functional.generate(
-            messages,
-            provider="gemini",
-            model="gemini-2.5-flash",
-            temperature=0.1,
-            max_tokens=50,
-        )
-
-        assert isinstance(response, str)
-        assert "Hello World" in response
-        assert usage.provider == "gemini"
 
     @pytest.mark.asyncio
     async def test_generate_with_unsupported_provider(self):
@@ -116,7 +70,7 @@ class TestFunctionalInterface:
         assert usage.token_count > 0
 
     @pytest.mark.skipif(
-        not os.environ.get("ANTHROPIC_API_KEY"), reason="ANTHROPIC_API_KEY not set"
+        not os.environ.get("OPENAI_API_KEY"), reason="OPENAI_API_KEY not set"
     )
     @pytest.mark.asyncio
     async def test_generate_with_structured_output(self):
@@ -128,8 +82,8 @@ class TestFunctionalInterface:
         ]
         response, usage = await functional.generate(
             messages,
-            provider="anthropic",
-            model="claude-sonnet-4-20250514",
+            provider="openai",
+            model="gpt-4o-mini",
             response_format=ResponseModel,
             max_tokens=100,
         )

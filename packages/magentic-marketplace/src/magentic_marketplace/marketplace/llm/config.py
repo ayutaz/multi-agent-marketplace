@@ -1,8 +1,7 @@
 """Configuration management for LLM providers and API settings.
 
 This module provides configuration classes and utilities for managing environment
-variables and settings across different LLM providers including OpenAI, Azure OpenAI,
-Gemini, and Anthropic.
+variables and settings across different LLM providers including OpenAI and Azure OpenAI.
 """
 
 import logging
@@ -13,7 +12,7 @@ from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 
-LLM_PROVIDER = Literal["openai", "gemini", "anthropic"]
+LLM_PROVIDER = Literal["openai"]
 ALLOWED_LLM_PROVIDERS = get_args(LLM_PROVIDER)
 # Exclude these fields when dumping for concrete client completions
 EXCLUDE_FIELDS = {"provider", "max_concurrency", "base_url"}

@@ -5,7 +5,7 @@
 ### 必須のモデル設定
 
 - API キー
-- `LLM_PROVIDER` で API を設定（選択肢: `"openai"`, `"gemini"`, `"anthropic"`）
+- `LLM_PROVIDER` で API を設定（現在は `"openai"` のみ対応）
 - `LLM_MODEL` でモデルを設定（例: `"gpt-4.1"`）
 
 ### 任意の追加モデル設定

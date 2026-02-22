@@ -1,9 +1,9 @@
 """Abstract base class for LLM model clients."""
 
 from collections.abc import Sequence
-from typing import Annotated, Any, overload
+from typing import Any, overload
 
-from pydantic import Field, TypeAdapter
+from pydantic import TypeAdapter
 
 from magentic_marketplace.platform.logger import MarketplaceLogger
 
@@ -12,15 +12,10 @@ from .base import (
     TResponseModel,
     Usage,
 )
-from .clients.anthropic import AnthropicClient, AnthropicConfig
-from .clients.gemini import GeminiClient, GeminiConfig
 from .clients.openai import OpenAIClient, OpenAIConfig
 from .config import EXCLUDE_FIELDS, LLM_PROVIDER
 
-ConcreteLLMConfigs = Annotated[
-    AnthropicConfig | GeminiConfig | OpenAIConfig,
-    Field(discriminator="provider"),
-]
+ConcreteLLMConfigs = OpenAIConfig
 ConcreteConfigAdapter: TypeAdapter[ConcreteLLMConfigs] = TypeAdapter(ConcreteLLMConfigs)
 
 
@@ -128,15 +123,7 @@ async def generate(
     config = ConcreteConfigAdapter.validate_python(config_kwargs)
 
     # Get or create client from cache using the from_cache method
-    match config.provider:
-        case "anthropic":
-            client = AnthropicClient.from_cache(config)
-        case "openai":
-            client = OpenAIClient.from_cache(config)
-        case "gemini":
-            client = GeminiClient.from_cache(config)
-        case _:
-            raise ValueError(f"Unsupported provider: {config.provider}")
+    client = OpenAIClient.from_cache(config)
 
     kwargs = {**config.model_dump(exclude=EXCLUDE_FIELDS), **kwargs}
 
@@ -151,6 +138,4 @@ async def generate(
 
 def clear_client_caches() -> None:
     """Clear the client caches in all client classes. Useful for testing or changing configurations."""
-    AnthropicClient._client_cache.clear()
     OpenAIClient._client_cache.clear()
-    GeminiClient._client_cache.clear()
