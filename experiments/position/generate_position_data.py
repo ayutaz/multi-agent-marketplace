@@ -69,7 +69,7 @@ def main():
         if not filename.endswith(".db") or filename.endswith(("-shm", "-wal")):
             continue
 
-        # Parse filename: position_business_0001_first_gemini-2.5-flash_run1.db
+        # Parse filename: position_business_0001_first_gpt-4o_run1.db
         # Remove prefix and .db
         name = filename.replace("position_", "").replace(".db", "")
 
@@ -81,16 +81,14 @@ def main():
         run_number = parts[1]
         rest = parts[0]
 
-        # rest is now: business_0001_first_gemini-2.5-flash or contractors_first_gemini-2.5-flash
+        # rest is now: business_0001_first_gpt_4o or contractors_first_gpt_4o
         # Split by underscore from the right to find model
         # Handle multi-part model names like qwen3_4b
         known_models = [
-            "claude_sonnet_4_5",
             "gpt_oss_20b",
             "qwen3_4b",
             "gpt_4o",
             "gpt_4_1",
-            "gemini_2_5_flash",
         ]
 
         model = None

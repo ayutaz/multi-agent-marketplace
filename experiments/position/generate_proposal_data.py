@@ -98,7 +98,7 @@ def main() -> None:
     # Process each database file
     for filename in sorted(os.listdir(results_dir)):
         if filename.endswith(".db") and not filename.endswith(("-shm", "-wal")):
-            # Parse filename: position_business_0001_first_gemini-2.5-flash_run1.db
+            # Parse filename: position_business_0001_first_gpt-4o_run1.db
             name = filename.replace("position_", "").replace(".db", "")
 
             if "_run" not in name:
@@ -111,11 +111,9 @@ def main() -> None:
             # Split by underscore from the right to find model
             # Handle multi-part model names like qwen3_4b
             known_models = [
-                "claude_sonnet_4_5",
                 "qwen3_4b",
                 "gpt_4o",
                 "gpt_4_1",
-                "gemini_2_5_flash",
             ]
 
             model = None

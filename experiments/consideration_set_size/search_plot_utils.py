@@ -29,16 +29,6 @@ MODEL_STYLES = {
         "color": "#27AE60",
         "marker": "s",
     },
-    "gemini-2.5-flash": {
-        "display_name": "Gemini 2.5 Flash",
-        "color": "#8E44AD",
-        "marker": "d",
-    },
-    "claude-sonnet-4": {
-        "display_name": "Claude Sonnet 4",
-        "color": "#E74C3C",
-        "marker": "^",
-    },
 }
 
 

@@ -17,8 +17,6 @@ MODEL_PROVIDER_MAP = {
     "gpt-4o": "openai",
     "gpt-4.1": "openai",
     "gpt-5": "openai",
-    "gemini-2.5-flash": "gemini",
-    "claude-sonnet-4-20250514": "anthropic",
     "Qwen/Qwen3-4B-Instruct-2507": "openai",
     "openai/gpt-oss-20b": "openai",
     "Qwen/Qwen3-14B": "openai",
@@ -92,10 +90,6 @@ async def main(argv: Sequence[str] | None = None) -> int:
         model_provider = args.model_provider or MODEL_PROVIDER_MAP.get(args.model)
         os.environ["LLM_MODEL"] = args.model
         os.environ["LLM_PROVIDER"] = model_provider
-
-    if model_provider == "gemini":
-        print("Set LLM_MAX_CONCURRENCY to 8 for Gemini models.")
-        os.environ["LLM_MAX_CONCURRENCY"] = "8"
 
     model_clean = sanitize_model_name(args.model)
 

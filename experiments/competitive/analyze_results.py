@@ -52,13 +52,11 @@ def parse_filename(filename):
 
     # Known model patterns - check for multi-part model names
     known_models = [
-        "claude-sonnet-4-5",
         "gpt_oss_20b",
         "qwen3_4b",
         "qwen3_14b",
         "gpt-4o",
         "gpt-4.1",
-        "gemini-2.5-flash",
     ]
 
     model = None

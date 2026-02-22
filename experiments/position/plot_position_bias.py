@@ -118,7 +118,6 @@ def create_comparison_plot(df: pd.DataFrame, models: list[str]) -> Path:
         display_name = {
             "gpt-4o": "GPT-4o",
             "gpt-4.1": "GPT-4.1",
-            "gemini-2.5-flash": "Gemini-2.5-Flash",
             "qwen3_4b": "Qwen3-4B",
         }.get(model, model)
         ax.set_title(f"{display_name}", fontsize=TITLE_FONT_SIZE)
