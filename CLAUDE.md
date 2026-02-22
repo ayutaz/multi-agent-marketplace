@@ -77,7 +77,7 @@ magentic-marketplace ui my_exp
 - `protocol/search/` — 検索アルゴリズムの実装（lexical, rnr, filtered, optimal, simple）
 - `agents/` — CustomerAgent と BusinessAgent。`base.py` の BaseSimpleMarketplaceAgent を継承
 - `actions/` — アクションクラスとメッセージタイプ（TextMessage, OrderProposal, Payment）
-- `llm/` — マルチプロバイダ LLM 統合（OpenAI, Anthropic, Gemini）。`llm/base.py` の ProviderClient 基底クラスから各プロバイダクライアントを実装
+- `llm/` — OpenAI API を使用した LLM 統合。`llm/base.py` の ProviderClient 基底クラスから OpenAIClient を実装
 - `shared/models.py` — Business, Customer の Pydantic モデル
 
 **experiments/** — 実験実行・分析
@@ -105,7 +105,7 @@ Customer が Search → ビジネス一覧取得 → TextMessage で問い合わ
 
 ## 環境変数（.env）
 
-LLM プロバイダ設定: `LLM_PROVIDER`（openai/anthropic/gemini）、`LLM_MODEL`、`LLM_MAX_CONCURRENCY`（デフォルト64）
+LLM プロバイダ設定: `LLM_PROVIDER`（openai のみ対応）、`LLM_MODEL`、`LLM_MAX_CONCURRENCY`（デフォルト64）
 DB設定: `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_MAX_CONNECTIONS`
 
 ## CI

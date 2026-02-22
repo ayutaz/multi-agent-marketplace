@@ -7,8 +7,6 @@
 MODELS = [
     {"provider": "openai", "model": "gpt-4.1"},
     {"provider": "openai", "model": "gpt-4o"},
-    {"provider": "gemini", "model": "gemini-2.5-flash"},
-    {"provider": "anthropic", "model": "claude-sonnet-4-5"},
 ]
 
 # オープンソースモデルの場合（上記をコメントアウトし、ファイル内のqwenモデルのコメントを解除してください）
