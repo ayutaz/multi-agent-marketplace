@@ -1,22 +1,22 @@
-# Marketplace Protocol
+# マーケットプレイスプロトコル
 
-The marketplace protocol defines the rules and available actions agents can perform. See the code [here](https://github.com/microsoft/multi-agent-marketplace/blob/main/packages/magentic-marketplace/src/magentic_marketplace/marketplace/actions/actions.py).
+マーケットプレイスプロトコルは、エージェントが実行できるルールと利用可能なアクションを定義します。コードは[こちら](https://github.com/microsoft/multi-agent-marketplace/blob/main/packages/magentic-marketplace/src/magentic_marketplace/marketplace/actions/actions.py)を参照してください。
 
-## Available Actions
+## 利用可能なアクション
 
 ### Search
 
-Allows customer agents to discover businesses in the marketplace based on search queries.
+顧客エージェントが検索クエリに基づいてマーケットプレイス内のビジネスを発見できるようにします。
 
 ```python
 Search(from_agent_id: str, query: str, search_algorithm: SearchAlgorithm)
 ```
 
-We support different search algorithms for ranking the results: simple, filtered, lexical, and optimal.
+結果のランキングにはさまざまな検索アルゴリズムをサポートしています: simple、filtered、lexical、optimal。
 
 ### FetchMessages
 
-Retrieves messages sent to an agent. Agents periodically fetch messages to check for new communications.
+エージェントに送信されたメッセージを取得します。エージェントは定期的にメッセージを取得して、新しい通信がないか確認します。
 
 ```python
 FetchMessages(from_agent_id: str)
@@ -24,7 +24,7 @@ FetchMessages(from_agent_id: str)
 
 ### SendMessage
 
-Sends a message from one agent to another. Supports three [message types](https://github.com/microsoft/multi-agent-marketplace/blob/main/packages/magentic-marketplace/src/magentic_marketplace/marketplace/actions/messaging.py):
+あるエージェントから別のエージェントにメッセージを送信します。3つの[メッセージタイプ](https://github.com/microsoft/multi-agent-marketplace/blob/main/packages/magentic-marketplace/src/magentic_marketplace/marketplace/actions/messaging.py)をサポートしています:
 
 ```python
 SendMessage(
@@ -34,22 +34,22 @@ SendMessage(
 )
 ```
 
-**Text Message**: Simple text communication between agents
+**Text Message**: エージェント間のシンプルなテキスト通信
 
-- `content` (str): The message content
+- `content` (str): メッセージの内容
 
-**Order Proposal**: Business proposes a specific order with pricing
+**Order Proposal**: ビジネスが価格付きの具体的な注文を提案
 
-- `items` (List[Item]): List of items being proposed
-- `total_price` (float): Total price for the order
+- `items` (List[Item]): 提案される商品のリスト
+- `total_price` (float): 注文の合計金額
 
-**Payment**: Customer pays for an accepted order proposal
+**Payment**: 顧客が承認された注文提案に対して支払い
 
-- `amount` (float): Payment amount
-- `proposal_message_id` (str): Reference to the order being paid
+- `amount` (float): 支払い金額
+- `proposal_message_id` (str): 支払い対象の注文への参照
 
-## Example
+## 例
 
-As an example, a customer's assistant agent begins by executing a search action to find relevant businesses. It then sends text messages to each business. A business agent then fetches to get their new messages and replies with an order proposal. Next, the assistant agent also fetches and decides to accept the order proposal so sends a payment to the service. Finally, the service agent replies to confirm the payment and the conversation concludes.
+例として、顧客のアシスタントエージェントはまず検索アクションを実行して関連するビジネスを見つけます。次に、各ビジネスにテキストメッセージを送信します。ビジネスエージェントはメッセージを取得して新しいメッセージを受け取り、注文提案で返信します。続いて、アシスタントエージェントもメッセージを取得し、注文提案を承認することを決定して支払いを送信します。最後に、サービスエージェントが支払いの確認を返信し、会話が終了します。
 
-![Actions](/actions.png)
+![アクション](/actions.png)

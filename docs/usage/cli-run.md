@@ -1,37 +1,37 @@
-# `run`: Run a marketplace experiment
+# `run`: マーケットプレイス実験の実行
 
-Run a marketplace simulation using YAML configuration files. You must provide the path to a directory with `/businesses` and `/customers` subdirectories that contain YAML files. See the [data](https://github.com/microsoft/multi-agent-marketplace/tree/main/data) folder in our repo for examples.
+YAML 設定ファイルを使用してマーケットプレイスシミュレーションを実行します。`/businesses` と `/customers` サブディレクトリを含むディレクトリへのパスを指定する必要があります。設定例についてはリポジトリの [data](https://github.com/microsoft/multi-agent-marketplace/tree/main/data) フォルダを参照してください。
 
-**Usage:**
+**使い方:**
 
 ```bash
 magentic-marketplace run data/mexican_3_9 --experiment-name my_experiment
 ```
 
-**Common arguments:**
+**主な引数:**
 
-`data_dir` _(required)_
+`data_dir` _(必須)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Path to the data directory containing `businesses/` and `customers/` subdirectories
+&nbsp;&nbsp;&nbsp;&nbsp;`businesses/` と `customers/` サブディレクトリを含むデータディレクトリへのパス。
 
-`--experiment-name` _(optional)_
+`--experiment-name` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Name for this experiment. If not provided, a unique name will be generated.
+&nbsp;&nbsp;&nbsp;&nbsp;この実験の名前。指定しない場合、一意の名前が自動生成されます。
 
-`--override-db` _(optional)_
+`--override-db` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Override the experiment with this name if it exists.
+&nbsp;&nbsp;&nbsp;&nbsp;同名の実験が既に存在する場合、上書きします。
 
-`--search-algorithm` _(optional)_
+`--search-algorithm` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Search algorithm for customer agents (default: `lexical`).
+&nbsp;&nbsp;&nbsp;&nbsp;顧客エージェントの検索アルゴリズム（デフォルト: `lexical`）。
 
-`--search-bandwidth` _(optional)_
+`--search-bandwidth` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Search bandwidth for customer agents (default: `10`).
+&nbsp;&nbsp;&nbsp;&nbsp;顧客エージェントの検索帯域幅（デフォルト: `10`）。
 
-`--customer-max-steps` _(optional)_
+`--customer-max-steps` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Maximum number of steps a customer agent can take before stopping (default: `100`).
+&nbsp;&nbsp;&nbsp;&nbsp;顧客エージェントが停止するまでの最大ステップ数（デフォルト: `100`）。
 
-**Additional options:** See additional arguments with `magentic-marketplace run --help`.
+**その他のオプション:** `magentic-marketplace run --help` で追加の引数を確認できます。

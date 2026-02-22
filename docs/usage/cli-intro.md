@@ -1,11 +1,11 @@
-# Command Line Usage
+# コマンドラインの使い方
 
-Magentic Marketplace provides a command-line interface for running experiments and analyzing results with the `magentic-marketplace` command.
+Magentic Marketplace は、`magentic-marketplace` コマンドで実験の実行や結果の分析を行うコマンドラインインターフェースを提供します。
 
-- [`magentic-marketplace run`](/usage/cli-run) to run an experiment
-- [`magentic-marketplace analyze`](/usage/cli-analyze) to analyze the results
-- [`magentic-marketplace export`](/usage/cli-export) to export results to shareable file
-- [`magentic-marketplace list`](/usage/cli-list) to list all experiments
-- [`magentic-marketplace ui`](/usage/cli-ui) to launch the ui
+- [`magentic-marketplace run`](/usage/cli-run) で実験を実行
+- [`magentic-marketplace analyze`](/usage/cli-analyze) で結果を分析
+- [`magentic-marketplace export`](/usage/cli-export) で結果を共有可能なファイルにエクスポート
+- [`magentic-marketplace list`](/usage/cli-list) で全実験を一覧表示
+- [`magentic-marketplace ui`](/usage/cli-ui) で UI を起動
 
-See all the available commands and options with `magentic-marketplace --help`.
+`magentic-marketplace --help` で利用可能なすべてのコマンドとオプションを確認できます。

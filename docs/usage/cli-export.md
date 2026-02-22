@@ -1,23 +1,23 @@
-# `export`: Export results
+# `export`: 結果のエクスポート
 
-Export a PostgreSQL experiment to a SQLite database file for easier sharing and portability.
+PostgreSQL の実験データを SQLite データベースファイルにエクスポートし、共有や移植を容易にします。
 
-**Usage:**
+**使い方:**
 
 ```bash
 magentic-marketplace export my_experiment
 ```
 
-**Common arguments:**
+**主な引数:**
 
-`experiment_name` _(required)_
+`experiment_name` _(必須)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Experiment name (PostgreSQL schema name).
+&nbsp;&nbsp;&nbsp;&nbsp;実験名（PostgreSQL のスキーマ名）。
 
-`-o, --output-dir` _(optional)_
+`-o, --output-dir` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Output directory for SQLite database file (default: current directory).
+&nbsp;&nbsp;&nbsp;&nbsp;SQLite データベースファイルの出力ディレクトリ（デフォルト: カレントディレクトリ）。
 
-`-f, --output-filename` _(optional)_
+`-f, --output-filename` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Output filename for SQLite database (default: `<experiment_name>.db`).
+&nbsp;&nbsp;&nbsp;&nbsp;SQLite データベースの出力ファイル名（デフォルト: `<experiment_name>.db`）。

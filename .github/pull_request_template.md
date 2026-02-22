@@ -1,11 +1,11 @@
-<!-- Brief explanation of changes -->
+<!-- 変更内容の簡単な説明 -->
 
 
 
 ---
 
-**PR Checklist (do not remove):**
-- [ ] I've added necessary new tests and they pass
-- [ ] My PR description explains how to test this contribution
-- [ ] I have linked this PR to an issue
-- [ ] I have requested reviews from two people
+**PRチェックリスト（削除しないでください）：**
+- [ ] 必要な新しいテストを追加し、パスしていること
+- [ ] PR説明にこのコントリビューションのテスト方法を記載していること
+- [ ] このPRをissueにリンクしていること
+- [ ] 2名にレビューをリクエストしていること

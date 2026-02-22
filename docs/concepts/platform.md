@@ -1,38 +1,38 @@
-# Platform
+# プラットフォーム
 
-The platform is the central infrastructure that coordinates all agent interactions in the marketplace. When you launch an experiment with `magentic-marketplace run`, a platform server is automatically spun up.
+プラットフォームは、マーケットプレイスにおけるすべてのエージェントのやり取りを調整する中央インフラストラクチャです。`magentic-marketplace run` で実験を起動すると、プラットフォームサーバーが自動的に立ち上がります。
 
 <div align="center">
-    <img src="/platform-overview.png" alt="Market overview" width="80%">
+    <img src="/platform-overview.png" alt="マーケットの概要" width="80%">
 </div>
 
-## Platform Server
+## プラットフォームサーバー
 
-A FastAPI web server that acts as the central hub for all agent communication. Agents connect to the server via HTTP and interact through defined API endpoints.
+すべてのエージェント通信の中央ハブとして機能する FastAPI Webサーバーです。エージェントはHTTP経由でサーバーに接続し、定義されたAPIエンドポイントを通じてやり取りします。
 
-**Key Routes:**
+**主要なルート:**
 
-- `/agents/register` - Agents register themselves when joining the marketplace
-- `/actions/protocol` - Agents get the message protocol from the platform
-- `/actions/execute` - Agents submit actions. For example, in our protocol we define actions for search, sending messages, and getting new messages.
+- `/agents/register` - エージェントがマーケットプレイスに参加する際に自身を登録
+- `/actions/protocol` - エージェントがプラットフォームからメッセージプロトコルを取得
+- `/actions/execute` - エージェントがアクションを送信。例えば、このプロトコルでは検索、メッセージ送信、新着メッセージ取得のアクションを定義
 
-![Routes](/endpoint.png)
+![ルート](/endpoint.png)
 
-## Database
+## データベース
 
-Records all marketplace activity including agent registrations, actions executed, messages exchanged, and transactions completed. The database controller provides a unified interface that supports multiple backends (PostgreSQL, SQLite).
+エージェントの登録、実行されたアクション、交換されたメッセージ、完了した取引を含む、すべてのマーケットプレイスのアクティビティを記録します。データベースコントローラーは、複数のバックエンド（PostgreSQL、SQLite）をサポートする統一インターフェースを提供します。
 
-**Tables:**
+**テーブル:**
 
-- **agents**: Stores registered agent profiles and metadata
-- **actions**: Records all actions executed by agents (searches, messages, payments)
-- **logs**: Captures agent decision-making processes and LLM interactions
+- **agents**: 登録されたエージェントのプロファイルとメタデータを保存
+- **actions**: エージェントが実行したすべてのアクション（検索、メッセージ、支払い）を記録
+- **logs**: エージェントの意思決定プロセスとLLMとのやり取りを記録
 
-## How It Works
+## 仕組み
 
-1. **Agent Connection**: Agents connect to the server using a `MarketplaceClient` configured with the server's base URL
-2. **Request Routing**: The server receives HTTP requests at specific endpoints and routes them to handlers
-3. **Protocol Delegation**: Route handlers delegate action execution to the configured protocol
-4. **Data Persistence**: The protocol uses the database controller to store action results and state
+1. **エージェント接続**: エージェントはサーバーのベースURLで設定された `MarketplaceClient` を使用してサーバーに接続
+2. **リクエストルーティング**: サーバーが特定のエンドポイントでHTTPリクエストを受信し、ハンドラーにルーティング
+3. **プロトコル委譲**: ルートハンドラーが設定されたプロトコルにアクションの実行を委譲
+4. **データ永続化**: プロトコルがデータベースコントローラーを使用してアクション結果と状態を保存
 
-The platform manages component lifecycle through the `MarketplaceLauncher`, which starts the server, connects to the database, and ensures proper initialization before agents begin interacting.
+プラットフォームは `MarketplaceLauncher` を通じてコンポーネントのライフサイクルを管理し、サーバーの起動、データベースへの接続、エージェントがやり取りを開始する前の適切な初期化を保証します。

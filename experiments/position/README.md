@@ -1,9 +1,9 @@
-# Position Bias Experiments
+# 位置バイアス実験
 
-## Setup
-Configure models in `run_n_experiments.py`:
+## セットアップ
+`run_n_experiments.py` でモデルを設定します:
 ```python
-# For closed-source models (default):
+# クローズドソースモデルの場合（デフォルト）:
 MODELS = [
     {"provider": "openai", "model": "gpt-4.1"},
     {"provider": "openai", "model": "gpt-4o"},
@@ -11,10 +11,10 @@ MODELS = [
     {"provider": "anthropic", "model": "claude-sonnet-4-5"},
 ]
 
-# For open-source models (comment out above, uncomment qwen models in the file)
+# オープンソースモデルの場合（上記をコメントアウトし、ファイル内のqwenモデルのコメントを解除してください）
 ```
 
-## Run
+## 実行
 ```bash
 python run_n_experiments.py
 python generate_position_data.py
@@ -23,4 +23,4 @@ python plot_position_bias.py
 python plot_proposal_bias.py
 ```
 
-Results are saved in `results/`.
+結果は `results/` に保存されます。

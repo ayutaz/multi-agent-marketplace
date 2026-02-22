@@ -1,9 +1,9 @@
 # Magentic Marketplace
 
-[Documentation](https://microsoft.github.io/multi-agent-marketplace/) | [Paper](https://arxiv.org/abs/2510.25779)
+[ドキュメント](https://microsoft.github.io/multi-agent-marketplace/) | [論文](https://arxiv.org/abs/2510.25779)
 
 
-**Magentic Marketplace** is a Python framework for simulating AI-powered markets. Configure LLM-based buyer and seller agents, run realistic marketplace simulations, and measure economic outcomes like welfare, fairness, and efficiency.
+**Magentic Marketplace** は、AI駆動のマーケットプレイスをシミュレートするためのPythonフレームワークです。LLMベースの買い手エージェントと売り手エージェントを設定し、リアルなマーケットプレイスシミュレーションを実行し、福利厚生、公平性、効率性などの経済的な成果を測定できます。
 
 <div align="center">
 
@@ -12,66 +12,66 @@
 </div>
 
 
-## What can you do with this?
+## これで何ができるのか？
 
-- **Evaluate LLM models** - Compare how different models (OpenAI, Claude, Gemini, local models) perform as marketplace agents
-- **Test market designs** - Experiment with different search algorithms, communication protocols, and marketplace rules
-- **Study agent behavior** - Measure welfare outcomes, identify biases, and test resistance to manipulation
-- **Extend to new domains** - Adapt the framework beyond restaurants/contractors to other two-sided markets
+- **LLMモデルの評価** - 異なるモデル（OpenAI、Claude、Gemini、ローカルモデル）がマーケットプレイスエージェントとしてどのように機能するかを比較
+- **マーケット設計のテスト** - 異なる検索アルゴリズム、通信プロトコル、マーケットプレイスルールを実験
+- **エージェント行動の研究** - 福利厚生の成果を測定し、バイアスを特定し、操作への耐性をテスト
+- **新しいドメインへの拡張** - レストラン/請負業者以外の他の二面市場にフレームワークを適用
 
-## Quick Start
+## クイックスタート
 
-1. Configure your environment
+1. 環境を設定する
 
    ```bash
-   # Clone the repo
+   # リポジトリをクローン
    git clone https://github.com/microsoft/multi-agent-marketplace.git
    cd multi-agent-marketplace
 
-   # Install dependencies with `uv`. Install from https://docs.astral.sh/uv/
+   # `uv` で依存関係をインストール。https://docs.astral.sh/uv/ からインストール
    uv sync --all-extras
    source .venv/bin/activate
 
-   # Configure environment variables in .env. Edit in favorite editor
+   # .env に環境変数を設定。お好みのエディタで編集
    cp sample.env .env
 
-   # Start the database server
+   # データベースサーバーを起動
    docker compose up -d
    ```
 
-2. Run simulations and analyze the outputs
+2. シミュレーションを実行し、結果を分析する
 
    ```bash
-   # Run an experiment (experiment name is optional)
+   # 実験を実行（実験名はオプション）
    magentic-marketplace run data/mexican_3_9 --experiment-name test_exp
 
-   # Analyze the results
+   # 結果を分析
    magentic-marketplace analyze test_exp
    ```
 
-   You can also run experiments from python scripts, see [experiments/example.py](experiments/example.py).
+   Pythonスクリプトから実験を実行することもできます。[experiments/example.py](experiments/example.py) を参照してください。
 
-   View more CLI options with `magentic-marketplace --help`.
+   `magentic-marketplace --help` でその他のCLIオプションを確認できます。
 
-## FAQ
+## よくある質問
 
-- [How can I test my LLM?](https://microsoft.github.io/multi-agent-marketplace/usage/env.html)
-- [How can I access the log and evaluate?](https://microsoft.github.io/multi-agent-marketplace/usage/cli-analyze.html)
+- [自分のLLMをテストするには？](https://microsoft.github.io/multi-agent-marketplace/usage/env.html)
+- [ログにアクセスして評価するには？](https://microsoft.github.io/multi-agent-marketplace/usage/cli-analyze.html)
 
-[**Check out the docs for more info.**](https://microsoft.github.io/multi-agent-marketplace/)
+[**詳細はドキュメントをご覧ください。**](https://microsoft.github.io/multi-agent-marketplace/)
 
-## Citation
+## 引用
 
-If you use this work, please cite:
+この研究を使用する場合は、以下を引用してください：
 
 ```
 @misc{bansal-arxiv-2025,
-      title={Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets}, 
+      title={Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets},
       author={Gagan Bansal and Wenyue Hua and Zezhou Huang and Adam Fourney and Amanda Swearngin and Will Epperson and Tyler Payne and Jake M. Hofman and Brendan Lucier and Chinmay Singh and Markus Mobius and Akshay Nambi and Archana Yadav and Kevin Gao and David M. Rothschild and Aleksandrs Slivkins and Daniel G. Goldstein and Hussein Mozannar and Nicole Immorlica and Maya Murad and Matthew Vogel and Subbarao Kambhampati and Eric Horvitz and Saleema Amershi},
       year={2025},
       eprint={2510.25779},
       archivePrefix={arXiv},
       primaryClass={cs.MA},
-      url={https://arxiv.org/abs/2510.25779}, 
+      url={https://arxiv.org/abs/2510.25779},
 }
 ```

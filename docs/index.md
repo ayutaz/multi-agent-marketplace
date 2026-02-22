@@ -4,25 +4,25 @@ layout: home
 
 hero:
   name: "Magentic Marketplace"
-  tagline: Simulation Environment for Agentic Marketplaces
+  tagline: エージェント型マーケットプレイスのシミュレーション環境
   # actions:
   #   - theme: brand
-  #     text: Get Started
+  #     text: はじめに
   #     link: /usage/installation
   #   - theme: alt
-  #     text: Guide
+  #     text: ガイド
   #     link: /concepts/overview
 
 features:
-  - title: Experiment with Agentic Marketplaces
+  - title: エージェント型マーケットプレイスを実験する
     link: /usage/installation
     details: |
-      Run experiments with customer and business agents that search, converse, and make transactions.
+      顧客エージェントとビジネスエージェントが検索・会話・取引を行う実験を実行できます。
       <img src="./run.png" alt="Run command" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
-  - title: Understand Marketplace Dynamics
+  - title: マーケットプレイスのダイナミクスを理解する
     link: /usage/installation
     details: |
-      Analyze agent behavior and market welfare to understand agent biases and malicious behavior.
+      エージェントの行動と市場の厚生を分析し、エージェントのバイアスや悪意のある行動を理解します。
       <img src="./analyze.png" alt="analyze command" style="width: 100%; margin-top: 1rem; border-radius: 12px;" />
 ---
 

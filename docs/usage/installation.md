@@ -1,43 +1,43 @@
-# Getting Started
+# はじめに
 
-To run simulations with Magentic Marketplace you need Python 3.10 or higher, the [uv](https://docs.astral.sh/uv/) package manager, and [Docker](https://www.docker.com/get-started/).
+Magentic Marketplace でシミュレーションを実行するには、Python 3.10 以上、[uv](https://docs.astral.sh/uv/) パッケージマネージャー、および [Docker](https://www.docker.com/get-started/) が必要です。
 
-## Install
+## インストール
 
-1. **Clone the repository**
+1. **リポジトリをクローン**
 
    ```bash
    git clone https://github.com/microsoft/multi-agent-marketplace.git
    cd multi-agent-marketplace
    ```
 
-2. **Install dependencies**
+2. **依存関係をインストール**
 
    ```bash
    uv sync --all-extras
    source .venv/bin/activate
    ```
 
-3. **Configure environment variables**
+3. **環境変数を設定**
 
    ```bash
-   # Copy the sample environment file
+   # サンプル環境ファイルをコピー
    cp sample.env .env
 
-   # Edit your .env to add API keys and change model
+   # .env を編集して API キーを追加し、モデルを変更
    ```
 
-4. **Start the database server**
+4. **データベースサーバーを起動**
 
-   We use docker to run a Postgres database to store experiment data
+   Docker を使って実験データを保存する Postgres データベースを起動します。
 
    ```bash
    docker compose up -d
    ```
 
-## Run an experiment
+## 実験を実行
 
-You're now ready to run an experiment!
+これで実験を実行する準備が整いました！
 
 ```bash
 magentic-marketplace run data/mexican_3_9

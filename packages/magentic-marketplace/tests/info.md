@@ -1,18 +1,18 @@
-# Running tests
+# テストの実行
 
-Run all:
+全テストの実行:
 ```bash
 uv run pytest tests
 ```
 
-Individually
+個別に実行:
 ```bash
-# Search
-uv run pytest tests/protocol/test_search.py   
+# 検索
+uv run pytest tests/protocol/test_search.py
 
-# Send 
-uv run pytest tests/protocol/test_send_message.py 
+# メッセージ送信
+uv run pytest tests/protocol/test_send_message.py
 
-# Fetch
-uv run pytest tests/protocol/test_fetch_messages.py 
+# メッセージ取得
+uv run pytest tests/protocol/test_fetch_messages.py
 ```

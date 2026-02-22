@@ -1,6 +1,6 @@
-# Python API Usage
+# Python API の使い方
 
-You can run experiments programmatically from Python scripts using the Python API.
+Python スクリプトから Python API を使って、プログラムで実験を実行できます。
 
 ```python
 import asyncio
@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from magentic_marketplace.experiments.run_analytics import run_analytics
 from magentic_marketplace.experiments.run_experiment import run_marketplace_experiment
 
-# load your model and experiment settings
+# モデルと実験の設定を読み込む
 load_dotenv()
 
 async def main():

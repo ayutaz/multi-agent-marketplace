@@ -1,36 +1,36 @@
-# Environment Setup
+# 環境設定
 
-When you clone the repo there is a sample environment setup in `sample.env`. You can configure variables for the models used in your simulation, your database, and to control the level of concurrency.
+リポジトリをクローンすると、`sample.env` にサンプルの環境設定があります。シミュレーションで使用するモデル、データベース、並行処理のレベルを設定できます。
 
-### Required Model Configuration
+### 必須のモデル設定
 
-- API keys
-- `LLM_PROVIDER` sets the api (options are `"openai"`, `"gemini"`, `"anthropic"`)
-- `LLM_MODEL` sets the model (e.g. `"gpt-4.1"`)
+- API キー
+- `LLM_PROVIDER` で API を設定（選択肢: `"openai"`, `"gemini"`, `"anthropic"`）
+- `LLM_MODEL` でモデルを設定（例: `"gpt-4.1"`）
 
-### Optional Extra Model Configuration
+### 任意の追加モデル設定
 
-- `LLM_REASONING_EFFORT` controls the depth of reasoning for models that support it (options: `"minimal"`, `"standard"`, `"high"`)
-- `LLM_TEMPERATURE` controls response randomness
-- `LLM_MAX_TOKENS` sets maximum tokens generated per response
-- `LLM_MAX_CONCURRENCY` limits concurrent requests happening at once to prevent rate limiting
+- `LLM_REASONING_EFFORT` で推論の深さを制御（対応モデルのみ。選択肢: `"minimal"`, `"standard"`, `"high"`）
+- `LLM_TEMPERATURE` で応答のランダム性を制御
+- `LLM_MAX_TOKENS` で1回の応答あたりの最大トークン数を設定
+- `LLM_MAX_CONCURRENCY` でレート制限を防ぐための同時リクエスト数を制限
 
-### Database Setup
+### データベース設定
 
-There are several variables in the `sample.env` that must be set to determine database login. We encourage you to use the defaults. In addition you can set:
+`sample.env` にはデータベースのログイン情報を設定するための変数がいくつかあります。デフォルト値の使用を推奨します。追加で以下を設定できます:
 
-- `POSTGRES_MAX_CONNECTIONS` limits the number of simultaneous connections in the pool
+- `POSTGRES_MAX_CONNECTIONS` でコネクションプールの同時接続数を制限
 
 ## FAQ
 
-- **_How can I prevent rate limiting errors?_**
+- **_レート制限エラーを防ぐにはどうすればよいですか？_**
 
-  Try reducing the `LLM_MAX_CONCURRENCY` to something like 10 (setting to 1 means that each LLM call will happen sequentially).
+  `LLM_MAX_CONCURRENCY` を 10 程度に下げてみてください（1 に設定すると、各 LLM 呼び出しが順次実行されます）。
 
-- **_How can I fix errors related to too many database connections?_**
+- **_データベース接続数が多すぎるエラーを修正するにはどうすればよいですか？_**
 
-  Try reducing your `POSTGRES_MAX_CONNECTIONS`.
+  `POSTGRES_MAX_CONNECTIONS` を減らしてみてください。
 
-- **_How can I run more simulations in parallel with the same database?_**
+- **_同じデータベースでより多くのシミュレーションを並列実行するにはどうすればよいですか？_**
 
-  Try reducing your `POSTGRES_MAX_CONNECTIONS`.
+  `POSTGRES_MAX_CONNECTIONS` を減らしてみてください。

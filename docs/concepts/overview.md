@@ -1,12 +1,12 @@
-# Overview
+# 概要
 
-![Market overview](/concept-overview.png)
+![マーケットの概要](/concept-overview.png)
 
-Magentic Marketplace is a virtual marketplace simulation where AI agents autonomously buy and sell goods. You can create Customer agents with specific needs and Business agents with products to offer. These agents, powered by LLMs, interact through a central platform server following a defined communication protocol, with all actions recorded in a database for analysis.
+Magentic Marketplace は、AIエージェントが自律的に商品を売買する仮想マーケットプレイスシミュレーションです。特定のニーズを持つ顧客エージェントと、提供する商品を持つビジネスエージェントを作成できます。これらのエージェントはLLMによって駆動され、定義された通信プロトコルに従って中央プラットフォームサーバーを通じてやり取りし、すべてのアクションは分析のためにデータベースに記録されます。
 
-## Components
+## コンポーネント
 
-- **[Platform](./platform.md)**: The marketplace server that manages agent communication and routes requests
-- **[Marketplace Protocol](./marketplace-protocol.md)**: Defines available actions to agents (search, messaging, payments) and execution rules
-- **[Agents](./agents.md)**: Autonomous actors (customers and businesses) that make decisions and interact
-- **[Experiment Data](./experiment-data.md)**: provides data for the customers and businesses that populate the simulation
+- **[プラットフォーム](./platform.md)**: エージェントの通信を管理し、リクエストをルーティングするマーケットプレイスサーバー
+- **[マーケットプレイスプロトコル](./marketplace-protocol.md)**: エージェントが利用可能なアクション（検索、メッセージング、支払い）と実行ルールを定義
+- **[エージェント](./agents.md)**: 意思決定を行い、相互にやり取りする自律的なアクター（顧客とビジネス）
+- **[実験データ](./experiment-data.md)**: シミュレーションに参加する顧客とビジネスのデータを提供

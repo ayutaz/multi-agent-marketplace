@@ -1,161 +1,161 @@
-## Magentic Marketplace Repo & Synthetic Data
+## Magentic Marketplace リポジトリ & 合成データ
 
-### Overview
+### 概要
 
-Magentic Marketplace is an open-source environment for studying simulated multi-agentic marketplace scenarios, where AI agents participate in marketplaces with varying degrees of delegated autonomy on behalf of customers and businesses. The environment enables researchers to simulate and assess the welfare of marketplace participants under different conditions and baselines, supporting the full transaction lifecycle from search and discovery to transaction fulfillment.
+Magentic Marketplace は、シミュレートされたマルチエージェントマーケットプレイスシナリオを研究するためのオープンソース環境です。AIエージェントが顧客やビジネスの代理としてさまざまな程度の委任された自律性を持ってマーケットプレイスに参加します。この環境により、研究者はさまざまな条件やベースラインの下でマーケットプレイス参加者の福利厚生をシミュレートおよび評価でき、検索・発見からトランザクション完了までのトランザクションライフサイクル全体をサポートします。
 
-Magentic Marketplace includes two synthetic datasets for end-to-end agentic marketplace simulations:
+Magentic Marketplace には、エンドツーエンドのエージェントマーケットプレイスシミュレーション用の2つの合成データセットが含まれています：
 
-- **Mexican Restaurant Dataset:**  
-  Contains 100 customer requests and 300 Mexican restaurants across multiple scales (from 3 businesses/9 customers to 100 businesses/300 customers). Each restaurant features a menu of food options with prices, name and location information, and amenity features such as free WiFi, outdoor seating, delivery options, and custom decorations. Menu prices are independently sampled from item-specific distributions to ensure sufficient variation for testing and evaluating agent decision-making under different pricing scenarios.
+- **メキシカンレストランデータセット：**
+  100件の顧客リクエストと300件のメキシカンレストランを含み、複数のスケール（3ビジネス/9顧客から100ビジネス/300顧客まで）に対応しています。各レストランには、価格付きのフードオプションメニュー、名前と場所の情報、無料WiFi、屋外席、デリバリーオプション、カスタムデコレーションなどのアメニティ機能が含まれます。メニュー価格は、異なる価格設定シナリオでのエージェントの意思決定をテスト・評価するための十分な変動を確保するため、アイテム固有の分布から独立してサンプリングされています。
 
-- **Contractors Dataset:**  
-  Contains home contracting services with customer requests and contractor businesses across multiple scales (from 10 businesses/30 customers to 100 businesses/300 customers). Each contractor offers various home improvement services (painting, plumbing, electrical, landscaping, etc.) with realistic pricing distributions, business amenities (licensing, insurance, availability), and service capabilities designed to create scenarios where agents must navigate complex service matching and negotiation processes.
+- **請負業者データセット：**
+  住宅請負サービスを含み、顧客リクエストと請負業者ビジネスが複数のスケール（10ビジネス/30顧客から100ビジネス/300顧客まで）で提供されます。各請負業者は、さまざまな住宅改善サービス（塗装、配管、電気、造園など）をリアルな価格分布、ビジネスアメニティ（ライセンス、保険、利用可能性）、およびエージェントが複雑なサービスマッチングと交渉プロセスをナビゲートする必要があるシナリオを作成するためのサービス能力とともに提供します。
 
-Both datasets are designed to demonstrate the value of two-sided agentic marketplaces, enabling richer interactions between customer and business agents through direct communication, negotiation, and dynamic pricing.
+両データセットは、二面エージェントマーケットプレイスの価値を実証するために設計されており、直接的なコミュニケーション、交渉、動的価格設定を通じて顧客エージェントとビジネスエージェント間のより豊かなインタラクションを可能にします。
 
-See related [README](./README.md).  
+関連する [README](./README.md) を参照してください。
 
-A detailed discussion of the project can be found in our paper at: [TO DO: include Arxiv paper link once live](./README.md)
+プロジェクトの詳細な議論は、以下の論文をご覧ください: [TODO: Arxiv論文リンクが公開され次第追加](./README.md)
 
-### What Can Magentic Marketplace Do
+### Magentic Marketplace でできること
 
-Magentic Marketplace was developed to enable researchers and practitioners to safely study how AI agents behave in realistic marketplace environments and design mechanisms that improve their robustness and welfare. The environment provides a comprehensive testing ground for experimental exploration of these trade-offs, revealing how small changes in protocols lead to meaningful outcome differences in agent decision-making, negotiation strategies, market efficiency, and welfare outcomes.
+Magentic Marketplace は、研究者や実務者がリアルなマーケットプレイス環境でAIエージェントがどのように振る舞うかを安全に研究し、その堅牢性と福利厚生を向上させるメカニズムを設計できるようにするために開発されました。この環境は、これらのトレードオフの実験的探索のための包括的なテスト環境を提供し、プロトコルの小さな変更がエージェントの意思決定、交渉戦略、市場効率、福利厚生の成果にどのように有意義な違いをもたらすかを明らかにします。
 
-Synthetic datasets are released to enable controlled experiments on critical marketplace design questions without requiring real-world data or live marketplace deployment. These datasets provide realistic scenarios for studying agent biases, vulnerability to manipulation, and search ordering effects.
+合成データセットは、実世界のデータやライブマーケットプレイスの展開を必要とせずに、重要なマーケットプレイス設計の問題に関する制御された実験を可能にするためにリリースされています。これらのデータセットは、エージェントのバイアス、操作への脆弱性、検索順序の影響を研究するためのリアルなシナリオを提供します。
 
-### Intended Uses
+### 想定される用途
 
-- Studying AI agent behavior in marketplace environments, market mechanism design, and the economics of agentic systems.
-- Immediate experimentation with synthetic datasets, without domain-specific data collection.
-- Custom dataset integration is possible with adaptation to the platform's format.
-- Synthetic data generation scripts are available for creating custom datasets.
-- Platform and datasets are shared to facilitate reproduction of results and further research.
-- Intended for use by domain experts capable of evaluating output quality.
+- マーケットプレイス環境でのAIエージェントの行動、市場メカニズム設計、エージェントシステムの経済学の研究。
+- ドメイン固有のデータ収集なしで、合成データセットを用いた即座の実験が可能。
+- プラットフォームのフォーマットに適応することで、カスタムデータセットの統合が可能。
+- カスタムデータセット作成のための合成データ生成スクリプトが利用可能。
+- 結果の再現とさらなる研究を促進するために、プラットフォームとデータセットを共有。
+- 出力品質を評価できるドメイン専門家による使用を想定。
 
-### Out-of-Scope Uses
+### 対象外の用途
 
-- Not suited for production marketplace applications, real-world commercial deployment, or systems requiring high-reliability agent behavior.
-- Synthetic datasets are not suitable for training production AI systems, validating real-world business models, or making actual marketplace recommendations.
-- Datasets lack complex customer decision factors, dynamic business operations, competitive market pressures, and real-world contextual factors.
-- Not expected to generalize well to real-world marketplace outcomes.
+- 本番マーケットプレイスアプリケーション、実世界の商用展開、または高信頼性エージェント動作を必要とするシステムには適していません。
+- 合成データセットは、本番AIシステムのトレーニング、実世界のビジネスモデルの検証、または実際のマーケットプレイスの推薦には適していません。
+- データセットには、複雑な顧客の意思決定要因、動的なビジネス運営、競争的な市場圧力、実世界のコンテキスト要因が欠如しています。
+- 実世界のマーケットプレイスの成果への一般化は期待できません。
 
-## Dataset Details
+## データセットの詳細
 
-### Dataset Contents
+### データセットの内容
 
-- **Mexican Restaurant Dataset:**  
-  300 businesses and 100 customers. Business profiles include metadata, menu features, amenity features, and minimum price factors. Customer profiles include requests, menu features, and required amenities.
+- **メキシカンレストランデータセット：**
+  300のビジネスと100の顧客。ビジネスプロファイルにはメタデータ、メニュー機能、アメニティ機能、最低価格係数が含まれます。顧客プロファイルにはリクエスト、メニュー機能、必要なアメニティが含まれます。
 
-- **Contractors Dataset:**  
-  300 businesses and 100 customers. Contractor profiles include business metadata, service offerings, and capability features. Customer profiles include service requests and requirements.
+- **請負業者データセット：**
+  300のビジネスと100の顧客。請負業者プロファイルにはビジネスメタデータ、サービス提供内容、能力機能が含まれます。顧客プロファイルにはサービスリクエストと要件が含まれます。
 
-Datasets generated using automated LLM-based scripts (August–September 2025), with structured prompts and validation for realistic scenarios.
+データセットは、自動化されたLLMベースのスクリプトを使用して生成されました（2025年8月〜9月）。構造化されたプロンプトとバリデーションによりリアルなシナリオを実現しています。
 
-### Data Creation & Processing
+### データの作成と処理
 
-- Programmatic generation methods leveraging LLMs.
-- Automated scripts for menu/service item generation, business profile creation, and customer profile generation.
-- Multiple retry mechanisms, consistency checks, and format validation for high-quality synthetic data.
+- LLMを活用したプログラム的な生成手法。
+- メニュー/サービスアイテムの生成、ビジネスプロファイルの作成、顧客プロファイルの生成のための自動化スクリプト。
+- 高品質な合成データのための複数のリトライメカニズム、整合性チェック、フォーマットバリデーション。
 
-### People & Identifiers
+### 人物と識別子
 
-- Data points simulate individual preferences and willingness to pay.
-- No correspondence to real people.
+- データポイントは個人の嗜好と支払い意欲をシミュレートします。
+- 実在の人物との対応はありません。
 
-### Sensitive or Harmful Content
+### センシティブまたは有害なコンテンツ
 
-- Synthetic datasets are not believed to contain offensive or distressing information.
+- 合成データセットには、攻撃的または苦痛を与える情報は含まれていないと考えられています。
 
-### Other Processing
+### その他の処理
 
-- Duplicate/redundant information removed via software-based deduplication.
-- Annotated with structured marketplace metadata.
-- Labeling/annotation performed automatically during generation.
+- ソフトウェアベースの重複排除により、重複/冗長な情報を除去。
+- 構造化されたマーケットプレイスメタデータによるアノテーション。
+- ラベリング/アノテーションは生成中に自動的に実行。
 
-## Getting Started
+## はじめに
 
-- Follow README instructions to begin using Magentic Marketplace and synthetic data.
+- Magentic Marketplace と合成データの使用を開始するには、README の手順に従ってください。
 
-## Validation
+## バリデーション
 
-Validation scripts verify:
+バリデーションスクリプトは以下を検証します：
 
-- Business-customer compatibility
-- Price consistency
-- Feature validation
-- Name collision detection
-- Statistical validation
+- ビジネスと顧客の互換性
+- 価格の整合性
+- 機能のバリデーション
+- 名前の衝突検出
+- 統計的バリデーション
 
-## Evaluation
+## 評価
 
-Effectiveness assessed via:
+有効性は以下により評価されます：
 
-- Log analysis
-- Comparative benchmarks
-- Robustness checks
-- Model diversity
+- ログ分析
+- 比較ベンチマーク
+- 堅牢性チェック
+- モデルの多様性
 
-See paper for detailed discussion: [TO DO: add arxiv link](./README.md)
+詳細な議論は論文を参照してください: [TODO: arxivリンクを追加](./README.md)
 
-## Limitations
+## 制限事項
 
-### Code
+### コード
 
-- Developed for research and experimental purposes.
-- Further testing needed for commercial use.
-- Designed and tested in English; performance in other languages may vary.
-- Outputs may include errors or speculation; human oversight required.
-- Inherits biases/errors from base models.
-- Not designed to protect from security vulnerabilities.
+- 研究および実験目的で開発されています。
+- 商用利用にはさらなるテストが必要です。
+- 英語で設計・テストされています。他の言語でのパフォーマンスは異なる場合があります。
+- 出力にはエラーや推測が含まれる場合があります。人間の監視が必要です。
+- ベースモデルのバイアス/エラーを継承します。
+- セキュリティ脆弱性からの保護を目的として設計されていません。
 
-### Data
+### データ
 
-- Synthetic datasets for research/experimentation only.
-- English language instances only.
-- Lack of complex decision factors and real-world contextual features.
-- Not systematically evaluated for bias; users should consider and mitigate potential biases.
+- 合成データセットは研究/実験目的のみです。
+- 英語のインスタンスのみ。
+- 複雑な意思決定要因や実世界のコンテキスト機能が不足しています。
+- バイアスについて体系的に評価されていません。ユーザーは潜在的なバイアスを考慮し、軽減する必要があります。
 
-## Best Practices
+## ベストプラクティス
 
-- Leverage modular architecture for custom dataset integration.
-- Use validation scripts for compatibility.
-- Establish baselines and control groups.
-- Use multiple dataset scales for validation.
-- Configure similarity matching as needed.
-- Test robustness across LLM providers.
-- Use analytics endpoints for metrics.
-- Implement proper logging for reproducibility.
-- Scale experiments for statistical validation.
-- Employ Responsible AI mitigations (see Azure OpenAI resources).
+- カスタムデータセット統合のためにモジュラーアーキテクチャを活用する。
+- 互換性のためにバリデーションスクリプトを使用する。
+- ベースラインとコントロールグループを確立する。
+- バリデーションのために複数のデータセットスケールを使用する。
+- 必要に応じて類似度マッチングを設定する。
+- LLMプロバイダー間で堅牢性をテストする。
+- メトリクスのためにアナリティクスエンドポイントを使用する。
+- 再現性のために適切なロギングを実装する。
+- 統計的バリデーションのために実験をスケールする。
+- 責任あるAIの緩和策を採用する（Azure OpenAI リソースを参照）。
 
-**Responsible AI Resources:**
+**責任あるAIリソース：**
 - [Azure AI Content Safety](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview)
-- [Responsible AI practices for Azure OpenAI models](https://learn.microsoft.com/en-us/legal/cognitive-services/openai/overview)
-- [Azure OpenAI Transparency Note](https://learn.microsoft.com/en-us/legal/cognitive-services/openai/transparency-note)
-- [OpenAI’s Usage policies](https://openai.com/policies/usage-policies)
-- [Azure OpenAI’s Code of Conduct](https://learn.microsoft.com/en-us/legal/cognitive-services/openai/code-of-conduct)
+- [Azure OpenAI モデルのための責任あるAIプラクティス](https://learn.microsoft.com/en-us/legal/cognitive-services/openai/overview)
+- [Azure OpenAI 透明性に関する注記](https://learn.microsoft.com/en-us/legal/cognitive-services/openai/transparency-note)
+- [OpenAI の使用ポリシー](https://openai.com/policies/usage-policies)
+- [Azure OpenAI の行動規範](https://learn.microsoft.com/en-us/legal/cognitive-services/openai/code-of-conduct)
 
-- Users must ensure compliance with data protection regulations and organizational guidelines.
-- Source datasets legally and ethically.
+- ユーザーはデータ保護規制および組織のガイドラインへの準拠を確保する必要があります。
+- データセットは合法的かつ倫理的に調達してください。
 
-## License
+## ライセンス
 
 [MIT License](./LICENSE)
 
-## Trademarks
+## 商標
 
-- Use of Microsoft trademarks/logos must follow Microsoft’s Trademark & Brand Guidelines.
-- Third-party trademarks/logos subject to respective policies.
+- Microsoft の商標/ロゴの使用は Microsoft の商標およびブランドガイドラインに従う必要があります。
+- サードパーティの商標/ロゴはそれぞれのポリシーに従います。
 
-## Ethics
+## 倫理
 
-- Synthetic data generation designed to avoid privacy compromise.
-- All entities are artificially generated.
-- Prompts designed to avoid discriminatory, offensive, or harmful content.
+- 合成データ生成はプライバシーの侵害を回避するように設計されています。
+- すべてのエンティティは人工的に生成されています。
+- プロンプトは差別的、攻撃的、または有害なコンテンツを回避するように設計されています。
 
-## Contact
+## お問い合わせ
 
-Research conducted by members of [Microsoft Research](https://www.microsoft.com/en-us/research/).  
-Feedback and collaboration welcome: magenticmarket@microsoft.com  
-Repository will be updated with mitigations as needed.
+研究は [Microsoft Research](https://www.microsoft.com/en-us/research/) のメンバーにより実施されました。
+フィードバックとコラボレーションを歓迎します: magenticmarket@microsoft.com
+リポジトリは必要に応じて緩和策をもって更新されます。

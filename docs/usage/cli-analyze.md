@@ -1,23 +1,23 @@
-# `analyze`: Analyze experiment results
+# `analyze`: 実験結果の分析
 
-After an experiment finishes, you can analyze the results with this command. By default it will print out analytics and save them to a json file.
+実験の完了後、このコマンドで結果を分析できます。デフォルトでは分析結果を表示し、JSONファイルに保存します。
 
-**Usage:**
+**使い方:**
 
 ```bash
 magentic-marketplace analyze my_experiment
 ```
 
-**Common arguments:**
+**主な引数:**
 
-`experiment-name` _(required)_
+`experiment-name` _(必須)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Experiment name (PostgreSQL schema name).
+&nbsp;&nbsp;&nbsp;&nbsp;実験名（PostgreSQL のスキーマ名）。
 
-`--db-type` _(optional)_
+`--db-type` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Type of database: `sqlite` or `postgres` (default: `postgres`). For postgres, the experiment name is the name of a schema in the database. For sqlite, it is the path to a database file.
+&nbsp;&nbsp;&nbsp;&nbsp;データベースの種類: `sqlite` または `postgres`（デフォルト: `postgres`）。postgres の場合、実験名はデータベース内のスキーマ名です。sqlite の場合、データベースファイルへのパスです。
 
-`--no-save-json` _(optional)_
+`--no-save-json` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Disable saving analytics to JSON file
+&nbsp;&nbsp;&nbsp;&nbsp;分析結果のJSONファイルへの保存を無効にします。

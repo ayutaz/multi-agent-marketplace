@@ -1,15 +1,15 @@
-# `list`: List all experiments
+# `list`: 全実験の一覧表示
 
-List all marketplace experiments stored in PostgreSQL.
+PostgreSQL に保存されているすべてのマーケットプレイス実験を一覧表示します。
 
-**Usage:**
+**使い方:**
 
 ```bash
 magentic-marketplace list --limit 10
 ```
 
-**Common arguments:**
+**主な引数:**
 
-`--limit` _(optional)_
+`--limit` _(任意)_
 
-&nbsp;&nbsp;&nbsp;&nbsp;Limit the number of experiments to display.
+&nbsp;&nbsp;&nbsp;&nbsp;表示する実験数の上限。

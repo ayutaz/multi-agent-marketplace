@@ -1,8 +1,8 @@
-# Experiment Data
+# 実験データ
 
-Experiments require agent profile data in YAML format, organized into `businesses/` and `customers/` directories.
+実験には、YAML形式のエージェントプロファイルデータが必要であり、`businesses/` と `customers/` ディレクトリに整理されています。
 
-## Customer
+## 顧客
 
 ```yaml
 id: customer_0001
@@ -15,15 +15,15 @@ amenity_features:
   - Amenity_03
 ```
 
-**Fields:**
+**フィールド:**
 
-- `id` (string): Unique customer identifier
-- `name` (string): Customer display name
-- `request` (string): What the customer is looking for
-- `menu_features` (list): Desired menu items with expected price
-- `amenity_features` (list): Desired amenities
+- `id` (string): 顧客の一意な識別子
+- `name` (string): 顧客の表示名
+- `request` (string): 顧客が探しているもの
+- `menu_features` (list): 希望するメニュー項目と期待価格
+- `amenity_features` (list): 希望するアメニティ
 
-## Business
+## ビジネス
 
 ```yaml
 id: business_0001
@@ -43,18 +43,18 @@ amenity_features:
 min_price_factor: 0.8
 ```
 
-**Fields:**
+**フィールド:**
 
-- `id` (string): Unique business identifier
-- `name` (string): Business display name
-- `description` (string): Business description
-- `rating` (float): Business rating (0-1 scale)
-- `progenitor_customer` (string): Associated customer ID (used in data generation)
-- `menu_features` (dict): Menu items with prices
-- `amenity_features` (dict): Available amenities (boolean)
-- `min_price_factor` (float): Minimum pricing multiplier
+- `id` (string): ビジネスの一意な識別子
+- `name` (string): ビジネスの表示名
+- `description` (string): ビジネスの説明
+- `rating` (float): ビジネスの評価（0-1のスケール）
+- `progenitor_customer` (string): 関連する顧客ID（データ生成時に使用）
+- `menu_features` (dict): メニュー項目と価格
+- `amenity_features` (dict): 利用可能なアメニティ（真偽値）
+- `min_price_factor` (float): 最低価格倍率
 
-## Directory Structure
+## ディレクトリ構造
 
 ```
 experiment_data/

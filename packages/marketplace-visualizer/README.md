@@ -1,12 +1,12 @@
 # Marketplace Visualizer
 
-Visualize the results in the marketplace!
+マーケットプレイスの結果を可視化します!
 
-## Quick Start
+## クイックスタート
 
-This visualizer runs against a database after an experiment has finished.
+このビジュアライザーは、実験完了後のデータベースに対して動作します。
 
-First, run an experiment to get a schema name:
+まず、実験を実行してスキーマ名を取得します:
 
 ```bash
 cd multi-agent-marketplace
@@ -15,31 +15,31 @@ docker compose up -d
 magentic-marketplace run data/mexican_3_9 --experiment-name myexperiment123
 ```
 
-Then you can launch the visualizer:
+次に、ビジュアライザーを起動できます:
 
 ```bash
 magentic-marketplace ui myexperiment123
 ```
 
-## Dev
+## 開発
 
-To make changes you first need to install the frontend code then run the server in dev mode
+変更を加えるには、まずフロントエンドのコードをインストールしてから、開発モードでサーバーを実行する必要があります
 
 ```bash
 cd marketplace-visualizer
 uv sync
 npm install
-npm run build # builds output files
+npm run build # 出力ファイルをビルド
 ```
 
-Then launch UI in dev mode
+次に、開発モードでUIを起動します
 
 ```bash
 cd marketplace-visualizer
 npm run dev
 ```
 
-And also launch a backend server:
+さらにバックエンドサーバーも起動します:
 
 ```bash
 magentic-marketplace ui <schema-name>

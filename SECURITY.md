@@ -1,14 +1,14 @@
 <!-- BEGIN MICROSOFT SECURITY.MD V1.0.0 BLOCK -->
 
-## Security
+## セキュリティ
 
-Microsoft takes the security of our software products and services seriously, which
-includes all source code repositories in our GitHub organizations.
+Microsoft は、当社のソフトウェア製品およびサービスのセキュリティを重視しており、
+これには GitHub 組織内のすべてのソースコードリポジトリが含まれます。
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+**セキュリティ脆弱性を公開の GitHub issue として報告しないでください。**
 
-For security reporting information, locations, contact information, and policies,
-please review the latest guidance for Microsoft repositories at
-[https://aka.ms/SECURITY.md](https://aka.ms/SECURITY.md).
+セキュリティの報告に関する情報、報告先、連絡先情報、およびポリシーについては、
+Microsoft リポジトリの最新のガイダンスを以下で確認してください：
+[https://aka.ms/SECURITY.md](https://aka.ms/SECURITY.md)
 
 <!-- END MICROSOFT SECURITY.MD BLOCK -->

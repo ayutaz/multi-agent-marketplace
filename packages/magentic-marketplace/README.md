@@ -1,8 +1,7 @@
 # Magentic Marketplace
 
-Magentic marketplace has 3 sub-modules:
+Magentic marketplace には3つのサブモジュールがあります:
 
-- `experiments`: scripts for running experiments
-- `marketplace`: defines the marketplace protocol and actions
-- `platform`: contains the core gym server and database functionality
-
+- `experiments`: 実験を実行するためのスクリプト
+- `marketplace`: マーケットプレイスプロトコルとアクションの定義
+- `platform`: コアとなるgymサーバーとデータベース機能
