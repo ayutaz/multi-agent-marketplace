@@ -3,6 +3,7 @@
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -24,14 +25,23 @@ from ..platform.database.base import BaseDatabaseController
 # Global database controller (set during lifespan)
 _db_controller: BaseDatabaseController | None = None
 
+# Cache for marketplace data (populated on first request, read-only data)
+_marketplace_data_cache: dict[str, Any] | None = None
 
-async def _load_customers():
-    """Load all customer agents from the database."""
+
+async def _load_agents():
+    """Load all agents from the database and split into customers and businesses.
+
+    Returns:
+        Tuple of (customers list, businesses list)
+
+    """
     if _db_controller is None:
         raise RuntimeError("Database controller not initialized")
 
     agent_rows = await _db_controller.agents.get_all()
     customers = []
+    businesses = []
 
     for agent_row in agent_rows:
         agent = MarketplaceAgentProfileAdapter.validate_python(
@@ -40,50 +50,35 @@ async def _load_customers():
 
         if isinstance(agent, CustomerAgentProfile):
             customer_data = agent.customer
-            customer = {
-                "id": agent.id,
-                "name": customer_data.name,
-                "user_request": customer_data.request,
-                "menu_features": customer_data.menu_features,
-                "amenity_features": customer_data.amenity_features,
-            }
-            customers.append(customer)
-
-    return customers
-
-
-async def _load_businesses():
-    """Load all business agents from the database."""
-    if _db_controller is None:
-        raise RuntimeError("Database controller not initialized")
-
-    agent_rows = await _db_controller.agents.get_all()
-    businesses = []
-
-    for agent_row in agent_rows:
-        agent = MarketplaceAgentProfileAdapter.validate_python(
-            agent_row.data.model_dump()
-        )
-
-        if isinstance(agent, BusinessAgentProfile):
+            customers.append(
+                {
+                    "id": agent.id,
+                    "name": customer_data.name,
+                    "user_request": customer_data.request,
+                    "menu_features": customer_data.menu_features,
+                    "amenity_features": customer_data.amenity_features,
+                }
+            )
+        elif isinstance(agent, BusinessAgentProfile):
             business_data = agent.business
-            business = {
-                "id": agent.id,
-                "name": business_data.name,
-                "rating": business_data.rating,
-                "price_min": min(business_data.menu_features.values())
-                if business_data.menu_features
-                else 0,
-                "price_max": max(business_data.menu_features.values())
-                if business_data.menu_features
-                else 0,
-                "description": business_data.description,
-                "menu_features": business_data.menu_features,
-                "amenity_features": business_data.amenity_features,
-            }
-            businesses.append(business)
+            businesses.append(
+                {
+                    "id": agent.id,
+                    "name": business_data.name,
+                    "rating": business_data.rating,
+                    "price_min": min(business_data.menu_features.values())
+                    if business_data.menu_features
+                    else 0,
+                    "price_max": max(business_data.menu_features.values())
+                    if business_data.menu_features
+                    else 0,
+                    "description": business_data.description,
+                    "menu_features": business_data.menu_features,
+                    "amenity_features": business_data.amenity_features,
+                }
+            )
 
-    return businesses
+    return customers, businesses
 
 
 async def _load_messages():
@@ -257,7 +252,8 @@ def create_analytics_app(
     @asynccontextmanager
     async def lifespan(_app: FastAPI):
         """Manage database connection lifecycle."""
-        global _db_controller
+        global _db_controller, _marketplace_data_cache
+        _marketplace_data_cache = None
 
         if db_type == "sqlite":
             print("Connecting to SQLite database...", flush=True)
@@ -281,6 +277,9 @@ def create_analytics_app(
                 port=postgres_port,
                 password=postgres_password,
                 mode="existing",
+                min_size=5,
+                max_size=30,
+                command_timeout=120,
             ) as db:
                 _db_controller = db
                 print("Database connection established", flush=True)
@@ -329,7 +328,8 @@ def create_analytics_app(
     async def get_customers():
         """Get all customers."""
         try:
-            return await _load_customers()
+            customers, _businesses = await _load_agents()
+            return customers
         except Exception as e:
             print(f"Error: {e}")
             return {"error": "Unable to load customers"}
@@ -338,17 +338,26 @@ def create_analytics_app(
     async def get_businesses():
         """Get all businesses."""
         try:
-            return await _load_businesses()
+            _customers, businesses = await _load_agents()
+            return businesses
         except Exception as e:
             print(f"Error: {e}")
             return {"error": "Unable to load businesses"}
 
     @app.get("/api/marketplace-data")
     async def get_marketplace_data():
-        """Get messages, message threads, and analytics."""
+        """Get messages, message threads, and analytics.
+
+        Results are cached after the first load since simulation
+        data is read-only during UI viewing.
+        """
+        global _marketplace_data_cache
+
+        if _marketplace_data_cache is not None:
+            return _marketplace_data_cache
+
         try:
-            customers = await _load_customers()
-            businesses = await _load_businesses()
+            customers, businesses = await _load_agents()
             messages = await _load_messages()
             threads_dict, threads_with_payments = _create_message_threads(
                 customers, businesses, messages
@@ -412,7 +421,7 @@ def create_analytics_app(
                 "total_proposals": analytics_results.transaction_summary.order_proposals_created,
             }
 
-            return {
+            result = {
                 "messages": messages,
                 "messageThreads": message_threads,
                 "analytics": {
@@ -421,6 +430,8 @@ def create_analytics_app(
                     "marketplace_summary": marketplace_summary,
                 },
             }
+            _marketplace_data_cache = result
+            return result
         except Exception as e:
             print(f"Error: {e}")
             return {"error": "Unable to load messages"}
